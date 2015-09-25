@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient", "Mntone.SplatoonClient\Mntone.SplatoonClient.csproj", "{1E193797-BC6F-4854-8AB6-6608514C9071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Demo", "Mntone.SplatoonClient.Demo\Mntone.SplatoonClient.Demo.csproj", "{7071753B-C25E-4CC4-95B8-4F10A63A3952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.NintendoNetworkHelper", "..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper.csproj", "{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

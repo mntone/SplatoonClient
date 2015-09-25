@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1E193797-BC6F-4854-8AB6-6608514C9071}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mntone.SplatoonClient</RootNamespace>
+    <AssemblyName>Mntone.SplatoonClient</AssemblyName>
+    <DefaultLanguage>ja-JP</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Friend.cs" />
+    <Compile Include="Entities\GameMode.cs" />
+    <Compile Include="Entities\GameModeExtensions.cs" />
+    <Compile Include="Entities\Intention.cs" />
+    <Compile Include="Entities\Stage.cs" />
+    <Compile Include="Entities\StageInformation.cs" />
+    <Compile Include="Entities\StagesResponse.cs" />
+    <Compile Include="Entities\TimePeriodInfo.cs" />
+    <Compile Include="Internal\HtmlAgilityExtensions.cs" />
+    <Compile Include="Internal\JsonSerializerExtensions.cs" />
+    <Compile Include="Internal\Messages.cs" />
+    <Compile Include="Internal\SplatoonConstantValues.cs" />
+    <Compile Include="Internal\SplatoonHelper.cs" />
+    <Compile Include="Internal\XPath\ExpressionExtensions.cs" />
+    <Compile Include="Internal\XPath\HtmlAgilityXPathRetriveConfig.cs" />
+    <Compile Include="Internal\XPath\IXPathRetriveConfig.cs" />
+    <Compile Include="Internal\XPath\TokenQueue.cs" />
+    <Compile Include="Internal\XPath\XPathCondition.cs" />
+    <Compile Include="Internal\XPath\XPathExpression.cs" />
+    <Compile Include="Internal\XPath\XPathExpressionBuilder.cs" />
+    <Compile Include="Internal\XPath\XPathParser.cs" />
+    <Compile Include="SplatoonClientException.cs" />
+    <Compile Include="SplatoonContext.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplatoonContextFactory.cs" />
+    <Compile Include="SplatoonContextFriends.cs" />
+    <Compile Include="SplatoonContextStages.cs" />
+    <Compile Include="StageParseConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper.csproj">
+      <Project>{1cfaae6c-8d46-4059-8cca-b025fb5ad48f}</Project>
+      <Name>Mntone.NintendoNetworkHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
