@@ -10,6 +10,16 @@ namespace Mntone.SplatoonClient.Entities
 	[DataContract]
 	public sealed class Friend
 	{
+		internal Friend(string id, bool online, string status, Intention intention, string name, Uri miiImageUri)
+		{
+			this.ID = id;
+			this.IsOnline = online;
+			this.Status = status;
+			this.Intention = intention;
+			this.Name = name;
+			this.MiiImageUri = miiImageUri;
+		}
+
 		/// <summary>
 		/// Friend id
 		/// </summary>

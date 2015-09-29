@@ -9,6 +9,12 @@ namespace Mntone.SplatoonClient.Entities
 	[DataContract]
 	public sealed class Intention
 	{
+		internal Intention(string id, Uri imageUri)
+		{
+			this.ID = id;
+			this.ImageUri = imageUri;
+		}
+
 		/// <summary>
 		/// Intention ID
 		/// </summary>

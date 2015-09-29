@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Mntone.SplatoonClient.Internal.XPath
 {
-	public sealed class XPathParser
+	internal sealed class XPathParser
 	{
 		private static readonly string[] ATTRIBUTE_COMBINATORS = new string[] { "@", "attribute::" };
 		private static readonly string[] HIERARCHY_COMBINATORS = new string[] { /*"//",*/ "/", /*"|"*/ };

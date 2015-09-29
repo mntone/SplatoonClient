@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace Mntone.SplatoonClient.Internal.XPath
 {
-	public abstract class XPathExpressionBuilder
+	internal abstract class XPathExpressionBuilder
 	{
 		public XPathExpressionBuilder Child { get; set; }
 
@@ -18,7 +18,7 @@ namespace Mntone.SplatoonClient.Internal.XPath
 		}
 	}
 
-	public sealed class RootXPathExpressionBuilder
+	internal sealed class RootXPathExpressionBuilder
 		: XPathExpressionBuilder
 	{
 		internal RootXPathExpressionBuilder() { }
