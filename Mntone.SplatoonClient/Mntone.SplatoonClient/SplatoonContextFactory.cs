@@ -13,6 +13,7 @@ namespace Mntone.SplatoonClient
 			var accessToken = await authorizer.Authorize(requestToken, new AuthenticationToken(username, password), SplatoonHelper.GetSessionValue).ConfigureAwait(false);
 			var requestToken2 = await authorizer.GetRequestTokenAsync(SplatoonConstantValues.AUTH_FORWARD_URI).ConfigureAwait(false);
 			var accessToken2 = await authorizer.Authorize(requestToken2, new AuthenticationToken(username, password), SplatoonHelper.GetSessionValue).ConfigureAwait(false);
+			authorizer.Dispose();
 			return new SplatoonContext(accessToken2);
 		}
 	}
