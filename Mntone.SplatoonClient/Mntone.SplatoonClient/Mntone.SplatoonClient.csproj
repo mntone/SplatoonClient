@@ -34,14 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Entities\Friend.cs" />
-    <Compile Include="Entities\GameMode.cs" />
-    <Compile Include="Entities\GameModeExtensions.cs" />
-    <Compile Include="Entities\Intention.cs" />
-    <Compile Include="Entities\Stage.cs" />
-    <Compile Include="Entities\StageInformation.cs" />
-    <Compile Include="Entities\StagesResponse.cs" />
-    <Compile Include="Entities\TimePeriodInfo.cs" />
     <Compile Include="Internal\HtmlAgilityExtensions.cs" />
     <Compile Include="Internal\JsonSerializerExtensions.cs" />
     <Compile Include="Internal\Messages.cs" />
@@ -68,14 +60,17 @@
       <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Mntone.NintendoNetworkHelper">
+      <HintPath>..\..\..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\bin\Debug\Mntone.NintendoNetworkHelper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper.csproj">
-      <Project>{1cfaae6c-8d46-4059-8cca-b025fb5ad48f}</Project>
-      <Name>Mntone.NintendoNetworkHelper</Name>
+    <ProjectReference Include="..\Mntone.SplatoonClient.Entities\Mntone.SplatoonClient.Entities.csproj">
+      <Project>{dd29069a-5a04-4aae-b73c-3354447f091e}</Project>
+      <Name>Mntone.SplatoonClient.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
