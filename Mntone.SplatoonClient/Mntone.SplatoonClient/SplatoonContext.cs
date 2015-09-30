@@ -38,16 +38,17 @@ namespace Mntone.SplatoonClient
 
 		private void AccessCheck()
 		{
-			if (!this._isEnabled)
-			{
-				throw new SplatoonClientException(Messages.DISPOSED_OBJECT);
-			}
+			if (!this._isEnabled) throw new SplatoonClientException(Messages.DISPOSED_OBJECT);
 		}
 
 		public void Dispose()
 		{
+			if (!this._isEnabled) return;
 			this._isEnabled = false;
+			this.ClientHandler = null;
 			this.Client.Dispose();
+			this.Client = null;
+			GC.SuppressFinalize(this);
 		}
 
 		#endregion
@@ -62,8 +63,8 @@ namespace Mntone.SplatoonClient
 			get { return SplatoonHelper.GetSessionValue(this.ClientHandler.CookieContainer); }
 		}
 
-		private HttpClientHandler ClientHandler { get; }
-		private HttpClient Client { get; }
+		private HttpClientHandler ClientHandler { get; set; }
+		private HttpClient Client { get; set; }
 
 		#endregion
 	}
