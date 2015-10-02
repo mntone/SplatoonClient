@@ -41,8 +41,8 @@ namespace Mntone.SplatoonClient
 			this._client = new HttpClient(this._clientHandler, true);
 			this._client.DefaultRequestHeaders.Add("user-agent",
 				!string.IsNullOrEmpty(this.AdditionalUserAgent)
-					? $"NintendoNetworkHelper/{AssemblyHelpers.GetAssemblyVersionText(this.GetType())} ({this.AdditionalUserAgent})"
-					: $"NintendoNetworkHelper/{AssemblyHelpers.GetAssemblyVersionText(this.GetType())}");
+					? $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version} ({this.AdditionalUserAgent})"
+					: $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version}");
 		}
 
 
