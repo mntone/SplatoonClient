@@ -85,7 +85,7 @@ namespace Mntone.SplatoonClient
 		public Task<StagesResponse> GetStagesAsync(StageParseConfig config = null)
 		{
 			this.AccessCheck();
-			return this.Client.GetStringAsync(SplatoonConstantValues.STAGES_URI_TEXT)
+			return this._client.GetStringAsync(SplatoonConstantValues.STAGES_URI_TEXT)
 				.ContinueWith(prevTask => ParseStages(prevTask.Result, config));
 		}
 	}

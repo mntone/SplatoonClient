@@ -8,14 +8,17 @@ namespace Mntone.SplatoonClient
 {
 	public sealed partial class SplatoonContext : IDisposable
 	{
-		private bool _isEnabled = true;
+		private bool _disposed = false;
+
+		private HttpClientHandler _clientHandler = null;
+		private HttpClient _client = null;
 
 		public SplatoonContext(string userName, string clientID, string sessionValue)
 		{
 			this.UserName = userName;
 			this.ClientID = clientID;
 
-			this.ClientHandler = new HttpClientHandler()
+			this._clientHandler = new HttpClientHandler()
 			{
 				AllowAutoRedirect = false,
 				AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip,
@@ -25,8 +28,12 @@ namespace Mntone.SplatoonClient
 				Secure = true,
 				HttpOnly = true,
 			};
-			this.ClientHandler.CookieContainer.Add(SplatoonConstantValues.DOMAIN_URI, cookie);
-			this.Client = new HttpClient(this.ClientHandler, true);
+			this._clientHandler.CookieContainer.Add(SplatoonConstantValues.DOMAIN_URI, cookie);
+			this._client = new HttpClient(this._clientHandler, true);
+			this._client.DefaultRequestHeaders.Add("user-agent",
+				!string.IsNullOrEmpty(this.AdditionalUserAgent)
+					? $"NintendoNetworkHelper/{AssemblyHelpers.GetAssemblyVersionText(this.GetType())} ({this.AdditionalUserAgent})"
+					: $"NintendoNetworkHelper/{AssemblyHelpers.GetAssemblyVersionText(this.GetType())}");
 		}
 
 		internal SplatoonContext(AccessToken accessToken)
@@ -38,17 +45,30 @@ namespace Mntone.SplatoonClient
 
 		private void AccessCheck()
 		{
-			if (!this._isEnabled) throw new SplatoonClientException(Messages.DISPOSED_OBJECT);
+			if (this._disposed) throw new SplatoonClientException(Messages.DISPOSED_OBJECT);
 		}
 
 		public void Dispose()
 		{
-			if (!this._isEnabled) return;
-			this._isEnabled = false;
-			this.ClientHandler = null;
-			this.Client.Dispose();
-			this.Client = null;
+			this.Dispose(true);
 			GC.SuppressFinalize(this);
+		}
+
+		private void Dispose(bool disposing)
+		{
+			if (this._disposed) return;
+			if (disposing) this.Release();
+			this._disposed = true;
+		}
+
+		private void Release()
+		{
+			if (this._client != null)
+			{
+				this._client.Dispose();
+				this._clientHandler = null;
+				this._client = null;
+			}
 		}
 
 		#endregion
@@ -60,11 +80,21 @@ namespace Mntone.SplatoonClient
 		public string ClientID { get; }
 		public string SessionValue
 		{
-			get { return SplatoonHelper.GetSessionValue(this.ClientHandler.CookieContainer); }
+			get { return SplatoonHelper.GetSessionValue(this._clientHandler.CookieContainer); }
 		}
 
-		private HttpClientHandler ClientHandler { get; set; }
-		private HttpClient Client { get; set; }
+		public string AdditionalUserAgent
+		{
+			get { return this._AdditionalUserAgent; }
+			set
+			{
+				if (this._AdditionalUserAgent == value) return;
+
+				this._AdditionalUserAgent = value;
+				this.Release();
+			}
+		}
+		private string _AdditionalUserAgent = null;
 
 		#endregion
 	}
