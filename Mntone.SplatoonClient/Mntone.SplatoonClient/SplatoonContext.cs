@@ -18,6 +18,15 @@ namespace Mntone.SplatoonClient
 			this.UserName = userName;
 			this.ClientID = clientID;
 
+			this.Initialize(sessionValue);
+		}
+
+		internal SplatoonContext(AccessToken accessToken)
+			: this(accessToken.UserName, accessToken.ClientID, accessToken.SessionValue)
+		{ }
+
+		private void Initialize(string sessionValue)
+		{
 			this._clientHandler = new HttpClientHandler()
 			{
 				AllowAutoRedirect = false,
@@ -35,10 +44,6 @@ namespace Mntone.SplatoonClient
 					? $"NintendoNetworkHelper/{AssemblyHelpers.GetAssemblyVersionText(this.GetType())} ({this.AdditionalUserAgent})"
 					: $"NintendoNetworkHelper/{AssemblyHelpers.GetAssemblyVersionText(this.GetType())}");
 		}
-
-		internal SplatoonContext(AccessToken accessToken)
-			: this(accessToken.UserName, accessToken.ClientID, accessToken.SessionValue)
-		{ }
 
 
 		#region Method
@@ -91,7 +96,10 @@ namespace Mntone.SplatoonClient
 				if (this._AdditionalUserAgent == value) return;
 
 				this._AdditionalUserAgent = value;
+
+				var sessionValue = this.SessionValue;
 				this.Release();
+				this.Initialize(sessionValue);
 			}
 		}
 		private string _AdditionalUserAgent = null;
