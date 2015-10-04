@@ -32,12 +32,8 @@ namespace Mntone.SplatoonClient
 				AllowAutoRedirect = false,
 				AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip,
 			};
-			var cookie = new Cookie(SplatoonConstantValues.COOKIE_SESSION_NAME, sessionValue, "/", SplatoonConstantValues.DOMAIN_TEXT)
-			{
-				Secure = true,
-				HttpOnly = true,
-			};
-			this._clientHandler.CookieContainer.Add(SplatoonConstantValues.DOMAIN_URI, cookie);
+			var cookie = $"{SplatoonConstantValues.COOKIE_SESSION_NAME}={sessionValue}; Path=/; Secure; HttpOnly";
+			this._clientHandler.CookieContainer.SetCookies(SplatoonConstantValues.DOMAIN_URI, cookie);
 			this._client = new HttpClient(this._clientHandler, true);
 			this._client.DefaultRequestHeaders.Add("user-agent",
 				!string.IsNullOrEmpty(this.AdditionalUserAgent)
