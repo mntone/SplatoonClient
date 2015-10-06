@@ -34,39 +34,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Internal\HtmlAgilityExtensions.cs" />
     <Compile Include="Internal\HttpClientExtensions.cs" />
     <Compile Include="Internal\JsonSerializerExtensions.cs" />
     <Compile Include="Internal\Messages.cs" />
     <Compile Include="Internal\SplatoonConstantValues.cs" />
     <Compile Include="Internal\SplatoonHelper.cs" />
-    <Compile Include="Internal\XPath\ExpressionExtensions.cs" />
-    <Compile Include="Internal\XPath\HtmlAgilityXPathRetriveConfig.cs" />
-    <Compile Include="Internal\XPath\IXPathRetriveConfig.cs" />
-    <Compile Include="Internal\XPath\TokenQueue.cs" />
-    <Compile Include="Internal\XPath\XPathCondition.cs" />
-    <Compile Include="Internal\XPath\XPathExpression.cs" />
-    <Compile Include="Internal\XPath\XPathExpressionBuilder.cs" />
-    <Compile Include="Internal\XPath\XPathParser.cs" />
     <Compile Include="SplatoonClientException.cs" />
     <Compile Include="SplatoonContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SplatoonContextFactory.cs" />
     <Compile Include="SplatoonContextFriends.cs" />
     <Compile Include="SplatoonContextStages.cs" />
-    <Compile Include="StageParseConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Mntone.NintendoNetworkHelper">
       <HintPath>..\..\..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\bin\Debug\Mntone.NintendoNetworkHelper.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mntone.SplatoonClient.Entities\Mntone.SplatoonClient.Entities.csproj">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mntone.SplatoonClient.Demo
 {
@@ -17,8 +18,8 @@ namespace Mntone.SplatoonClient.Demo
 
 			var ctx = SplatoonContextFactory.GetContextAsync(username, password).GetAwaiter().GetResult();
 			ViewFriends(ctx);
-			ViewStages(ctx);
-			
+			ViewSchedule(ctx);
+
 			Console.WriteLine("Press any key to exit.");
 			Console.ReadKey();
 		}
@@ -33,15 +34,20 @@ namespace Mntone.SplatoonClient.Demo
 			Console.WriteLine("-----------");
 		}
 
-		private static void ViewStages(SplatoonContext ctx)
+		private static void ViewSchedule(SplatoonContext ctx)
 		{
-			var stages = ctx.GetStagesAsync().GetAwaiter().GetResult();
+			var scheduleResponse = ctx.GetScheduleAsync().GetAwaiter().GetResult();
 
-			foreach (var s in stages.StageInformation)
+			foreach (var schedule in scheduleResponse.Schedule)
 			{
-				Console.WriteLine($"{s.TimePeriod.BeginTime} ~ {s.TimePeriod.EndTime}");
-				Console.WriteLine($"Regular Battle [Turf War]:\t{s.RegularBattleStages[0].Name} / {s.RegularBattleStages[1].Name}");
-				Console.WriteLine($"Ranked Battle [{s.RankedBattleRule}]:\t{s.RankedBattleStages[0].Name} / {s.RankedBattleStages[1].Name}");
+				Console.WriteLine($"{schedule.BeginDateTime} ~ {schedule.EndDateTime}");
+
+				Console.Write($"Regular Battle [Turf War]:\t{schedule.Stages.Regular[0].Name}");
+				foreach (var stage in schedule.Stages.Regular.Skip(1)) Console.Write($" / {stage.Name}");
+				Console.WriteLine();
+
+				Console.Write($"Ranked Battle [{schedule.GachiRule}]:\t{schedule.Stages.Gachi[0].Name}");
+				foreach (var stage in schedule.Stages.Gachi.Skip(1)) Console.Write($" / {stage.Name}");
 				Console.WriteLine();
 			}
 			Console.WriteLine("-----------");
