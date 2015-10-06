@@ -1,18 +1,30 @@
 ﻿using System.Resources;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Mntone.SplatoonClient.Entities.Internal;
 
-[assembly: AssemblyTitle("Mntone.SplatoonClient.Entities")]
+[assembly: AssemblyTitle(AssemblyInfo.Name)]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("mntone")]
-[assembly: AssemblyProduct("Mntone.SplatoonClient.Entities")]
-[assembly: AssemblyCopyright("Copyright (C) 2015- mntone")]
+[assembly: AssemblyCompany(AssemblyInfo.Author)]
+[assembly: AssemblyProduct(AssemblyInfo.Name)]
+[assembly: AssemblyCopyright("Copyright (C) 2015- " + AssemblyInfo.Author)]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: NeutralResourcesLanguage("ja")]
+[assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion("0.9.0.0")]
-[assembly: AssemblyFileVersion("0.9.0.0")]
+[assembly: AssemblyVersion(AssemblyInfo.Version)]
+[assembly: AssemblyFileVersion(AssemblyInfo.Version)]
 
 [assembly: InternalsVisibleTo("Mntone.SplatoonClient")]
+
+namespace Mntone.SplatoonClient.Entities.Internal
+{
+	internal static class AssemblyInfo
+	{
+		public const string Name = "Mntone.SplatoonClient.Entities";
+		public const string QualifiedName = "SplatoonClient (Entities)";
+		public const string Version = "0.9.0.0";
+		public const string Author = "mntone";
+	}
+}

@@ -12,7 +12,7 @@ namespace Mntone.SplatoonClient
 		public Task<Friend[]> GetFriendsAsync()
 		{
 			this.AccessCheck();
-			return this._client.GetStringAsync(SplatoonConstantValues.FRIENDS_URI_TEXT)
+			return this._client.GetStringWithAccessCheckAsync(SplatoonConstantValues.FRIENDS_URI_TEXT)
 				.ContinueWith(prevTask => ParseFriends(prevTask.Result));
 		}
 	}
