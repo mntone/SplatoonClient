@@ -23,19 +23,19 @@ namespace Mntone.SplatoonClient.Entities
 		/// <summary>
 		/// Friend id
 		/// </summary>
-		[DataMember(Name = "hashed_id")]
+		[DataMember(Name = "hashed_id", IsRequired = true)]
 		public string ID { get; private set; }
 
 		/// <summary>
 		/// Is online
 		/// </summary>
-		[DataMember(Name = "online")]
+		[DataMember(Name = "online", IsRequired = true)]
 		public bool IsOnline { get; private set; }
 
 		/// <summary>
 		/// Status
 		/// </summary>
-		[DataMember(Name = "status")]
+		[DataMember(Name = "status", IsRequired = true)]
 		public string Status { get; private set; }
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace Mntone.SplatoonClient.Entities
 		/// </summary>
 		public GameMode Mode { get; private set; }
 
-		[DataMember(Name = "mode")]
+		[DataMember(Name = "mode", IsRequired = true)]
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		private string ModeImpl
 		{
@@ -54,19 +54,19 @@ namespace Mntone.SplatoonClient.Entities
 		/// <summary>
 		/// Intention
 		/// </summary>
-		[DataMember(Name = "intention")]
+		[DataMember(Name = "intention", IsRequired = true)]
 		public Intention Intention { get; private set; }
 
 		/// <summary>
 		/// Name
 		/// </summary>
-		[DataMember(Name = "mii_name")]
+		[DataMember(Name = "mii_name", IsRequired = true)]
 		public string Name { get; private set; }
 
 		/// <summary>
 		/// Mii iamge uri
 		/// </summary>
-		[DataMember(Name = "mii_url")]
+		[DataMember(Name = "mii_url", IsRequired = true)]
 		public Uri MiiImageUri { get; private set; }
 	}
 }
