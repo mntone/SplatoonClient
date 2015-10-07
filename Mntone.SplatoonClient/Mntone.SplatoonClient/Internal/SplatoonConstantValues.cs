@@ -14,6 +14,7 @@ namespace Mntone.SplatoonClient.Internal
 
 		public const string COOKIE_SESSION_NAME = "_wag_session";
 
+		public const string SIGN_OUT_URI_TEXT = DOMAIN_URI_TEXT + "sign_out";
 		public const string FRIENDS_URI_TEXT = DOMAIN_URI_TEXT + "friend_list/index.json";
 		public const string SCHEDULES_URI_TEXT = DOMAIN_URI_TEXT + "schedule/index.json";
 	}

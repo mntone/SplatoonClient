@@ -3,6 +3,7 @@ using Mntone.SplatoonClient.Internal;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Mntone.SplatoonClient
 {
@@ -39,6 +40,25 @@ namespace Mntone.SplatoonClient
 				!string.IsNullOrEmpty(this.AdditionalUserAgent)
 					? $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version} ({this.AdditionalUserAgent})"
 					: $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version}");
+		}
+
+		public Task SignOutAsync()
+		{
+			return this._client.GetAsync(SplatoonConstantValues.SIGN_OUT_URI_TEXT)
+				.ContinueWith(prevTask =>
+				{
+					var result = prevTask.Result;
+					return this._client.GetAsync(result.Headers.Location);
+				}).Unwrap()
+				.ContinueWith(prevTask =>
+				{
+					var result = prevTask.Result;
+					if (result.StatusCode != HttpStatusCode.OK)
+					{
+						throw new SplatoonClientException(Messages.IMPOSSIBLE);
+					}
+					return result;
+				});
 		}
 
 

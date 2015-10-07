@@ -19,6 +19,7 @@ namespace Mntone.SplatoonClient.Demo
 			var ctx = SplatoonContextFactory.GetContextAsync(username, password).GetAwaiter().GetResult();
 			ViewFriends(ctx);
 			ViewSchedule(ctx);
+			ctx.SignOutAsync().GetAwaiter().GetResult();
 
 			Console.WriteLine("Press any key to exit.");
 			Console.ReadKey();
