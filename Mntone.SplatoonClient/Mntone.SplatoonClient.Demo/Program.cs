@@ -18,6 +18,7 @@ namespace Mntone.SplatoonClient.Demo
 
 			var ctx = SplatoonContextFactory.GetContextAsync(username, password).GetAwaiter().GetResult();
 			ViewFriends(ctx);
+			ViewRanking(ctx);
 			ViewSchedule(ctx);
 			ctx.SignOutAsync().GetAwaiter().GetResult();
 
@@ -31,6 +32,24 @@ namespace Mntone.SplatoonClient.Demo
 			foreach (var friend in friends)
 			{
 				Console.WriteLine($"{friend.Name}: {friend.Mode}");
+			}
+			Console.WriteLine("-----------");
+		}
+
+		private static void ViewRanking(SplatoonContext ctx)
+		{
+			var ranking = ctx.GetRankingAsync().GetAwaiter().GetResult();
+
+			Console.WriteLine("---[ Regular Battle ]--------");
+			foreach (var user in ranking.Regular)
+			{
+				Console.WriteLine($"{user.Rank}: {user.Name} ({user.Score})");
+			}
+
+			Console.WriteLine("---[ Ranked Battle ]--------");
+			foreach (var user in ranking.Gachi)
+			{
+				Console.WriteLine($"{user.Rank}: {user.Name} ({user.Score})");
 			}
 			Console.WriteLine("-----------");
 		}

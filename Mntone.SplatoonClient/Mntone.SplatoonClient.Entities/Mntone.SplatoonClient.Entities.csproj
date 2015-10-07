@@ -43,6 +43,8 @@
     <Compile Include="Intention.cs" />
     <Compile Include="Internal\JsonSerializerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RankingResponse.cs" />
+    <Compile Include="RankingUser.cs" />
     <Compile Include="Stage.cs" />
     <Compile Include="Schedule.cs" />
     <Compile Include="ScheduleResponse.cs" />
