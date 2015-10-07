@@ -1,6 +1,6 @@
 # Splatoon Client Library
 
-It’s Splatoon Client Library. It gets friends and stages information from “Squid Ring (Japanese: イカリング).”
+It’s Splatoon Client Library. Get your friends, ranking, and stages information from “SplatNet (Japanese: イカリング).”
 
 
 ## Requirement
