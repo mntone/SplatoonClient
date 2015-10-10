@@ -6,7 +6,7 @@ namespace Mntone.SplatoonClient
 {
 	partial class SplatoonContext
 	{
-		public static IScheduleResponse ParseSchedule(string jsonData)
+		private static IScheduleResponse ParseSchedule(string jsonData)
 		{
 			if (jsonData.Contains("\"festival\":true"))
 				return JsonSerializerExtensions.Load<FestivalScheduleResponse>(jsonData);
