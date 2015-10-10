@@ -58,18 +58,33 @@ namespace Mntone.SplatoonClient.Demo
 		{
 			var scheduleResponse = ctx.GetScheduleAsync().GetAwaiter().GetResult();
 
-			foreach (var schedule in scheduleResponse.Schedule)
+			if (scheduleResponse.IsFestival)
 			{
-				Console.WriteLine($"{schedule.BeginDateTime} ~ {schedule.EndDateTime}");
+				foreach (var schedule in scheduleResponse.Schedule)
+				{
+					Console.WriteLine($"{schedule.BeginDateTime} ~ {schedule.EndDateTime}");
 
-				Console.Write($"Regular Battle [Turf War]:\t{schedule.Stages.Regular[0].Name}");
-				foreach (var stage in schedule.Stages.Regular.Skip(1)) Console.Write($" / {stage.Name}");
-				Console.WriteLine();
-
-				Console.Write($"Ranked Battle [{schedule.GachiRule}]:\t{schedule.Stages.Gachi[0].Name}");
-				foreach (var stage in schedule.Stages.Gachi.Skip(1)) Console.Write($" / {stage.Name}");
-				Console.WriteLine();
+					Console.Write($"Splatfest [Turf War]:\t{schedule.Stages.Regular[0].Name}");
+					foreach (var stage in schedule.Stages.Regular.Skip(1)) Console.Write($" / {stage.Name}");
+					Console.WriteLine();
+				}
 			}
+			else
+			{
+				foreach (var schedule in scheduleResponse.Schedule)
+				{
+					Console.WriteLine($"{schedule.BeginDateTime} ~ {schedule.EndDateTime}");
+
+					Console.Write($"Regular Battle [Turf War]:\t{schedule.Stages.Regular[0].Name}");
+					foreach (var stage in schedule.Stages.Regular.Skip(1)) Console.Write($" / {stage.Name}");
+					Console.WriteLine();
+
+					Console.Write($"Ranked Battle [{schedule.GachiRule}]:\t{schedule.Stages.Gachi[0].Name}");
+					foreach (var stage in schedule.Stages.Gachi.Skip(1)) Console.Write($" / {stage.Name}");
+					Console.WriteLine();
+				}
+			}
+
 			Console.WriteLine("-----------");
 		}
 

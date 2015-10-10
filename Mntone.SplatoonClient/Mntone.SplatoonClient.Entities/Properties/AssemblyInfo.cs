@@ -24,7 +24,7 @@ namespace Mntone.SplatoonClient.Entities.Internal
 	{
 		public const string Name = "Mntone.SplatoonClient.Entities";
 		public const string QualifiedName = "SplatoonClient (Entities)";
-		public const string Version = "0.9.2.0";
+		public const string Version = "0.9.3.0";
 		public const string Author = "mntone";
 	}
 }

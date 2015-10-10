@@ -21,7 +21,7 @@ namespace Mntone.SplatoonClient.Internal
 	{
 		public const string Name = "Mntone.SplatoonClient";
 		public const string QualifiedName = "SplatoonClient";
-		public const string Version = "0.9.0.0";
-		public const string Author = "mntone";
+		public const string Version = Entities.Internal.AssemblyInfo.Version;
+		public const string Author = Entities.Internal.AssemblyInfo.Author;
 	}
 }

@@ -2,28 +2,69 @@
 
 namespace Mntone.SplatoonClient.Entities
 {
-	[DataContract]
-	public sealed class ScheduleResponse
+	public interface IScheduleResponse
 	{
-		private ScheduleResponse() { }
-
-		internal ScheduleResponse(bool festival, Schedule[] schedule)
-		{
-			this.IsFestival = festival;
-			this.Schedule = schedule;
-		}
-
 		/// <summary>
 		/// Is festival
 		/// </summary>
-		[DataMember(Name = "festival", IsRequired = true)]
-		public bool IsFestival { get; private set; }
+		bool IsFestival { get; }
 
 		/// <summary>
 		/// Schedule
 		/// </summary>
-		[DataMember(Name = "schedule", IsRequired = true)]
 		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.RootHidden)]
-		public Schedule[] Schedule { get; private set; }
+		ISchedule[] Schedule { get; }
+	}
+
+	[DataContract]
+	internal sealed class NormalScheduleResponse : IScheduleResponse
+	{
+		internal NormalScheduleResponse(NormalSchedule[] schedule)
+		{
+			this.ScheduleInternal = schedule;
+		}
+
+		public bool IsFestival => false;
+
+		[DataMember(Name = "festival", IsRequired = true)]
+		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+		private bool IsFestivalInternal
+		{
+			get { return false; }
+			set { if (value) throw new InvalidDataContractException(); }
+		}
+
+		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.RootHidden)]
+		public ISchedule[] Schedule => this.ScheduleInternal;
+
+		[DataMember(Name = "schedule", IsRequired = true)]
+		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+		private NormalSchedule[] ScheduleInternal { get; set; }
+	}
+
+	[DataContract]
+	internal sealed class FestivalScheduleResponse : IScheduleResponse
+	{
+		internal FestivalScheduleResponse(FestivalSchedule[] schedule)
+		{
+			this.ScheduleInternal = schedule;
+		}
+
+		public bool IsFestival => true;
+
+		[DataMember(Name = "festival", IsRequired = true)]
+		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+		private bool IsFestivalInternal
+		{
+			get { return true; }
+			set { if (!value) throw new InvalidDataContractException(); }
+		}
+
+		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.RootHidden)]
+		public ISchedule[] Schedule => this.ScheduleInternal;
+
+		[DataMember(Name = "schedule", IsRequired = true)]
+		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+		private FestivalSchedule[] ScheduleInternal { get; set; }
 	}
 }

@@ -6,10 +6,14 @@ namespace Mntone.SplatoonClient
 {
 	partial class SplatoonContext
 	{
-		private static ScheduleResponse ParseSchedule(string jsonData)
-			=> JsonSerializerExtensions.Load<ScheduleResponse>(jsonData);
+		public static IScheduleResponse ParseSchedule(string jsonData)
+		{
+			if (jsonData.Contains("\"festival\":true"))
+				return JsonSerializerExtensions.Load<FestivalScheduleResponse>(jsonData);
+			return JsonSerializerExtensions.Load<NormalScheduleResponse>(jsonData);
+		}
 
-		public Task<ScheduleResponse> GetScheduleAsync(string language = null)
+		public Task<IScheduleResponse> GetScheduleAsync(string language = null)
 		{
 			this.AccessCheck();
 			string uriText;
