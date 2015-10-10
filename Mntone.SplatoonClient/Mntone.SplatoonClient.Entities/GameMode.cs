@@ -9,5 +9,6 @@
 		Gachi,
 		Tag,
 		Private,
+		Fes,
 	}
 }

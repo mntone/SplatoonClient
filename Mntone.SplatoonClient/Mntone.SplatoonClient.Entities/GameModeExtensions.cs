@@ -15,6 +15,7 @@ namespace Mntone.SplatoonClient.Entities
 				case GameMode.Gachi: return "gachi";
 				case GameMode.Tag: return "tag";
 				case GameMode.Private: return "private";
+				case GameMode.Fes: return "fes";
 			}
 
 			throw new Exception();
@@ -33,6 +34,7 @@ namespace Mntone.SplatoonClient.Entities
 				case "gachi": return GameMode.Gachi;
 				case "tag": return GameMode.Tag;
 				case "private": return GameMode.Private;
+				case "fes": return GameMode.Fes;
 			}
 
 			throw new Exception();
