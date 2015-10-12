@@ -1,0 +1,24 @@
+group 'net.mntone.splatoonclient'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+defaultTasks 'jar'
+
+def jdkVersion = '1.6'
+sourceCompatibility = jdkVersion
+targetCompatibility = jdkVersion
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'net.mntone.splatoonclient', 'Implementation-Version': 1.0
+    }
+}
