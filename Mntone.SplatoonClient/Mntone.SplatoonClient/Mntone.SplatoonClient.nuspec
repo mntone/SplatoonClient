@@ -13,5 +13,9 @@
         <copyright>Copyright (C) 2015- mntone</copyright>
         <language>en-US</language>
         <tags>Nintendo NintendoNetwork Splatoon SplatoonClient SplatNet イカリング</tags>
+        <dependencies>
+            <dependency id="Mntone.NintendoNetworkHelper" />
+            <dependency id="Mntone.SplatoonClient.Entities" />
+        </dependencies>
     </metadata>
 </package>
