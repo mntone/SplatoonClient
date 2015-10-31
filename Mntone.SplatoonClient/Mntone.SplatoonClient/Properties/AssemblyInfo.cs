@@ -2,18 +2,18 @@
 using System.Reflection;
 using Mntone.SplatoonClient.Internal;
 
-[assembly: AssemblyTitle(AssemblyInfo.Name)]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle(AssemblyInfo.QualifiedName)]
+[assembly: AssemblyDescription(AssemblyInfo.Description)]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany(AssemblyInfo.Author)]
-[assembly: AssemblyProduct(AssemblyInfo.Name)]
+[assembly: AssemblyProduct(AssemblyInfo.QualifiedName)]
 [assembly: AssemblyCopyright("Copyright (C) 2015- " + AssemblyInfo.Author)]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyCulture("en-us")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion(AssemblyInfo.Version)]
-[assembly: AssemblyFileVersion(AssemblyInfo.Version)]
+[assembly: AssemblyVersion("0.9.3.3")]
+[assembly: AssemblyFileVersion("0.9.3.3")]
 
 namespace Mntone.SplatoonClient.Internal
 {
@@ -21,6 +21,7 @@ namespace Mntone.SplatoonClient.Internal
 	{
 		public const string Name = "Mntone.SplatoonClient";
 		public const string QualifiedName = "SplatoonClient";
+		public const string Description = Entities.Internal.AssemblyInfo.Description;
 		public const string Version = Entities.Internal.AssemblyInfo.Version;
 		public const string Author = Entities.Internal.AssemblyInfo.Author;
 	}

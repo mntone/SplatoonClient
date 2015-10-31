@@ -1,0 +1,2 @@
+nuget pack .\Mntone.SplatoonClient\Mntone.SplatoonClient.Entities\Mntone.SplatoonClient.Entities.csproj -Properties Configuration=Release;Platform=AnyCPU
+nuget pack .\Mntone.SplatoonClient\Mntone.SplatoonClient\Mntone.SplatoonClient.csproj -Properties Configuration=Release;Platform=AnyCPU
