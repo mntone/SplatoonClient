@@ -10,11 +10,11 @@ using Mntone.SplatoonClient.Entities.Internal;
 [assembly: AssemblyProduct(AssemblyInfo.QualifiedName)]
 [assembly: AssemblyCopyright("Copyright (C) 2015- " + AssemblyInfo.Author)]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("en-us")]
+[assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion("0.9.3.3")]
-[assembly: AssemblyFileVersion("0.9.3.3")]
+[assembly: AssemblyVersion("0.9.4.0")]
+[assembly: AssemblyFileVersion("0.9.4.0")]
 
 [assembly: InternalsVisibleTo("Mntone.SplatoonClient")]
 
@@ -25,7 +25,7 @@ namespace Mntone.SplatoonClient.Entities.Internal
 		public const string Name = "Mntone.SplatoonClient.Entities";
 		public const string QualifiedName = "SplatoonClient (Entities)";
 		public const string Description = "Get friends and stages information from “SplatNet (JPN: イカリング)”";
-        public const string Version = "0.9.3.3";
+        public const string Version = "0.9.4.0";
 		public const string Author = "mntone";
 	}
 }

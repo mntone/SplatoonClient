@@ -35,7 +35,7 @@ namespace Mntone.SplatoonClient
 			};
 			var cookie = $"{SplatoonConstantValues.COOKIE_SESSION_NAME}={sessionValue}; Path=/; Secure; HttpOnly";
 			this._clientHandler.CookieContainer.SetCookies(SplatoonConstantValues.DOMAIN_URI, cookie);
-			this._client = new HttpClient(this._clientHandler, true);
+			this._client = new HttpClient(NintendoNetworkHelper.Internal.PatchedHttpClientHandler.PatchOrDefault(this._clientHandler));
 			this._client.DefaultRequestHeaders.Add("user-agent",
 				!string.IsNullOrEmpty(this.AdditionalUserAgent)
 					? $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version} ({this.AdditionalUserAgent})"

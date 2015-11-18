@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Internal\PatchedHttpClientHandler.cs">
+      <Link>Internal\PatchedHttpClientHandler.cs</Link>
+    </Compile>
     <Compile Include="Internal\HttpClientExtensions.cs" />
     <Compile Include="Internal\JsonSerializerExtensions.cs" />
     <Compile Include="Internal\Messages.cs" />

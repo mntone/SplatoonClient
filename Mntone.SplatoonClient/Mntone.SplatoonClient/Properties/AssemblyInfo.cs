@@ -9,11 +9,11 @@ using Mntone.SplatoonClient.Internal;
 [assembly: AssemblyProduct(AssemblyInfo.QualifiedName)]
 [assembly: AssemblyCopyright("Copyright (C) 2015- " + AssemblyInfo.Author)]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("en-us")]
+[assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion("0.9.3.3")]
-[assembly: AssemblyFileVersion("0.9.3.3")]
+[assembly: AssemblyVersion("0.9.4.0")]
+[assembly: AssemblyFileVersion("0.9.4.0")]
 
 namespace Mntone.SplatoonClient.Internal
 {
