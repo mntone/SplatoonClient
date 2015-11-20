@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>19056d60-90c7-49da-9585-f8a9fdd6c2e9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Mntone.SplatoonClient.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\HttpClientExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\JsonSerializerExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\Messages.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\SplatoonConstantValues.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\SplatoonHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonClientException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextFriends.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextRanking.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextStages.cs" />
+  </ItemGroup>
+</Project>

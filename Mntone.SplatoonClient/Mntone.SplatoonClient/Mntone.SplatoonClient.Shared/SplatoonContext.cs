@@ -1,9 +1,15 @@
 ﻿using Mntone.NintendoNetworkHelper;
 using Mntone.SplatoonClient.Internal;
 using System;
+using System.Threading.Tasks;
+
+#if WINDOWS_APP
+using Windows.Web.Http;
+using Windows.Web.Http.Filters;
+#else
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
+#endif
 
 namespace Mntone.SplatoonClient
 {
@@ -11,8 +17,13 @@ namespace Mntone.SplatoonClient
 	{
 		private bool _disposed = false;
 
-		private HttpClientHandler _clientHandler = null;
+#if WINDOWS_APP
+		private HttpBaseProtocolFilter _filter = null;
 		private HttpClient _client = null;
+#else
+		private HttpClientHandler _handler = null;
+		private HttpClient _client = null;
+#endif
 
 		public SplatoonContext(string userName, string clientID, string sessionValue)
 		{
@@ -28,14 +39,32 @@ namespace Mntone.SplatoonClient
 
 		private void Initialize(string sessionValue)
 		{
-			this._clientHandler = new HttpClientHandler()
+#if WINDOWS_APP
+			this._filter = new HttpBaseProtocolFilter()
+			{
+				AllowAutoRedirect = false,
+				AllowUI = false,
+				AutomaticDecompression = true,
+			};
+
+			var cookie = new HttpCookie(SplatoonConstantValues.COOKIE_SESSION_NAME, SplatoonConstantValues.DOMAIN_URI_TEXT, "/")
+			{
+				Value = sessionValue,
+				Secure = true,
+				HttpOnly = true,
+			};
+            this._filter.CookieManager.SetCookie(cookie);
+			this._client = new HttpClient(this._filter);
+#else
+			this._handler = new HttpClientHandler()
 			{
 				AllowAutoRedirect = false,
 				AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip,
 			};
 			var cookie = $"{SplatoonConstantValues.COOKIE_SESSION_NAME}={sessionValue}; Path=/; Secure; HttpOnly";
-			this._clientHandler.CookieContainer.SetCookies(SplatoonConstantValues.DOMAIN_URI, cookie);
-			this._client = new HttpClient(NintendoNetworkHelper.Internal.PatchedHttpClientHandler.PatchOrDefault(this._clientHandler));
+			this._handler.CookieContainer.SetCookies(SplatoonConstantValues.DOMAIN_URI, cookie);
+			this._client = new HttpClient(this._handler);
+#endif
 			this._client.DefaultRequestHeaders.Add("user-agent",
 				!string.IsNullOrEmpty(this.AdditionalUserAgent)
 					? $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version} ({this.AdditionalUserAgent})"
@@ -44,16 +73,20 @@ namespace Mntone.SplatoonClient
 
 		public Task SignOutAsync()
 		{
-			return this._client.GetAsync(SplatoonConstantValues.SIGN_OUT_URI_TEXT)
+			return this._client.Get2Async(SplatoonConstantValues.SIGN_OUT_URI)
 				.ContinueWith(prevTask =>
 				{
 					var result = prevTask.Result;
-					return this._client.GetAsync(result.Headers.Location);
+					return this._client.Get2Async(result.Headers.Location);
 				}).Unwrap()
 				.ContinueWith(prevTask =>
 				{
 					var result = prevTask.Result;
+#if WINDOWS_APP
+					if (result.StatusCode != HttpStatusCode.Ok)
+#else
 					if (result.StatusCode != HttpStatusCode.OK)
+#endif
 					{
 						throw new SplatoonClientException(Messages.IMPOSSIBLE);
 					}
@@ -62,7 +95,7 @@ namespace Mntone.SplatoonClient
 		}
 
 
-		#region Method
+#region Method
 
 		private void AccessCheck()
 		{
@@ -87,21 +120,29 @@ namespace Mntone.SplatoonClient
 			if (this._client != null)
 			{
 				this._client.Dispose();
-				this._clientHandler = null;
+#if WINDOWS_APP
+				this._filter = null;
+#else
+				this._handler = null;
+#endif
 				this._client = null;
 			}
 		}
 
-		#endregion
+#endregion
 
 
-		#region Property
+#region Property
 
 		public string UserName { get; }
 		public string ClientID { get; }
 		public string SessionValue
 		{
-			get { return SplatoonHelper.GetSessionValue(this._clientHandler.CookieContainer); }
+#if WINDOWS_APP
+			get { return SplatoonHelper.GetSessionValue2(this._filter.CookieManager); }
+#else
+			get { return SplatoonHelper.GetSessionValue(this._handler.CookieContainer); }
+#endif
 		}
 
 		public string AdditionalUserAgent
@@ -120,6 +161,6 @@ namespace Mntone.SplatoonClient
 		}
 		private string _AdditionalUserAgent = null;
 
-		#endregion
+#endregion
 	}
 }

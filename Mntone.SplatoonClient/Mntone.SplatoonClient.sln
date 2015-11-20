@@ -3,28 +3,39 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient", "Mntone.SplatoonClient\Mntone.SplatoonClient.csproj", "{1E193797-BC6F-4854-8AB6-6608514C9071}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Demo", "Mntone.SplatoonClient.Demo\Mntone.SplatoonClient.Demo.csproj", "{7071753B-C25E-4CC4-95B8-4F10A63A3952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient", "Mntone.SplatoonClient\Mntone.SplatoonClient\Mntone.SplatoonClient.csproj", "{1E193797-BC6F-4854-8AB6-6608514C9071}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.NintendoNetworkHelper", "..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper.csproj", "{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Entities", "Mntone.SplatoonClient.Entities\Mntone.SplatoonClient.Entities.csproj", "{DD29069A-5A04-4AAE-B73C-3354447F091E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mntone.SplatoonClient", "Mntone.SplatoonClient", "{7908AA35-8B05-4DF1-BF2C-A68BB93DB39B}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Mntone.SplatoonClient.Shared", "Mntone.SplatoonClient\Mntone.SplatoonClient.Shared\Mntone.SplatoonClient.Shared.shproj", "{19056D60-90C7-49DA-9585-F8A9FDD6C2E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Windows", "Mntone.SplatoonClient\Mntone.SplatoonClient.Windows\Mntone.SplatoonClient.Windows.csproj", "{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Mntone.SplatoonClient\Mntone.SplatoonClient.Shared\Mntone.SplatoonClient.Shared.projitems*{1e193797-bc6f-4854-8ab6-6608514c9071}*SharedItemsImports = 4
+		Mntone.SplatoonClient\Mntone.SplatoonClient.Shared\Mntone.SplatoonClient.Shared.projitems*{ec4dda5d-5d14-415f-9ac5-6210b48d3e61}*SharedItemsImports = 4
+		Mntone.SplatoonClient\Mntone.SplatoonClient.Shared\Mntone.SplatoonClient.Shared.projitems*{19056d60-90c7-49da-9585-f8a9fdd6c2e9}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1E193797-BC6F-4854-8AB6-6608514C9071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E193797-BC6F-4854-8AB6-6608514C9071}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7071753B-C25E-4CC4-95B8-4F10A63A3952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,8 +44,17 @@ Global
 		{DD29069A-5A04-4AAE-B73C-3354447F091E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD29069A-5A04-4AAE-B73C-3354447F091E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD29069A-5A04-4AAE-B73C-3354447F091E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1E193797-BC6F-4854-8AB6-6608514C9071} = {7908AA35-8B05-4DF1-BF2C-A68BB93DB39B}
+		{19056D60-90C7-49DA-9585-F8A9FDD6C2E9} = {7908AA35-8B05-4DF1-BF2C-A68BB93DB39B}
+		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61} = {7908AA35-8B05-4DF1-BF2C-A68BB93DB39B}
 	EndGlobalSection
 EndGlobal
