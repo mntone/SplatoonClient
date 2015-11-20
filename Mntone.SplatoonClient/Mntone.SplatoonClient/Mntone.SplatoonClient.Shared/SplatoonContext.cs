@@ -1,6 +1,7 @@
 ﻿using Mntone.NintendoNetworkHelper;
 using Mntone.SplatoonClient.Internal;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 #if WINDOWS_APP
@@ -71,13 +72,14 @@ namespace Mntone.SplatoonClient
 					: $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version}");
 		}
 
-		public Task SignOutAsync()
+		public Task SignOutAsync() => this.SignOutAsync(CancellationToken.None);
+		public Task SignOutAsync(CancellationToken cancellationToken)
 		{
-			return this._client.Get2Async(SplatoonConstantValues.SIGN_OUT_URI)
+			return this._client.Get2Async(SplatoonConstantValues.SIGN_OUT_URI, cancellationToken)
 				.ContinueWith(prevTask =>
 				{
 					var result = prevTask.Result;
-					return this._client.Get2Async(result.Headers.Location);
+					return this._client.Get2Async(result.Headers.Location, cancellationToken);
 				}).Unwrap()
 				.ContinueWith(prevTask =>
 				{

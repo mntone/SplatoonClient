@@ -1,5 +1,6 @@
 ﻿using Mntone.SplatoonClient.Entities;
 using Mntone.SplatoonClient.Internal;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mntone.SplatoonClient
@@ -9,10 +10,11 @@ namespace Mntone.SplatoonClient
 		private static Friend[] ParseFriends(string jsonData)
 			=> JsonSerializerExtensions.Load<Friend[]>(jsonData);
 
-		public Task<Friend[]> GetFriendsAsync()
+		public Task<Friend[]> GetFriendsAsync() => this.GetFriendsAsync(CancellationToken.None);
+        public Task<Friend[]> GetFriendsAsync(CancellationToken cancellationToken)
 		{
 			this.AccessCheck();
-			return this._client.GetStringWithAccessCheckAsync(SplatoonConstantValues.FRIENDS_URI_TEXT)
+			return this._client.GetStringWithAccessCheckAsync(SplatoonConstantValues.FRIENDS_URI_TEXT, cancellationToken)
 				.ContinueWith(prevTask => ParseFriends(prevTask.Result));
 		}
 	}

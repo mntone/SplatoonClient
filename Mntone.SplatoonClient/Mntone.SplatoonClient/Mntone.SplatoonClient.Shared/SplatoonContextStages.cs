@@ -1,5 +1,7 @@
 ﻿using Mntone.SplatoonClient.Entities;
 using Mntone.SplatoonClient.Internal;
+using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Mntone.SplatoonClient
@@ -13,19 +15,21 @@ namespace Mntone.SplatoonClient
 			return JsonSerializerExtensions.Load<NormalScheduleResponse>(jsonData);
 		}
 
-		public Task<IScheduleResponse> GetScheduleAsync(string language = null)
+		public Task<IScheduleResponse> GetScheduleAsync() => this.GetScheduleAsync(CancellationToken.None);
+		public Task<IScheduleResponse> GetScheduleAsync(CancellationToken cancellationToken)
 		{
 			this.AccessCheck();
-			string uriText;
-			if (language == null)
-			{
-				uriText = SplatoonConstantValues.SCHEDULES_URI_TEXT;
-			}
-			else
-			{
-				uriText = $"{SplatoonConstantValues.SCHEDULES_URI_TEXT}?locale={language}";
-			}
-			return this._client.GetStringWithAccessCheckAsync(uriText)
+			return this._client.GetStringWithAccessCheckAsync(SplatoonConstantValues.SCHEDULES_URI_TEXT, cancellationToken)
+				.ContinueWith(prevTask => ParseSchedule(prevTask.Result));
+		}
+
+		public Task<IScheduleResponse> GetScheduleAsync(string language) => this.GetScheduleAsync(language, CancellationToken.None);
+		public Task<IScheduleResponse> GetScheduleAsync(string language, CancellationToken cancellationToken)
+		{
+			if (string.IsNullOrEmpty(language)) throw new ArgumentNullException(nameof(language));
+
+			this.AccessCheck();
+			return this._client.GetStringWithAccessCheckAsync($"{SplatoonConstantValues.SCHEDULES_URI_TEXT}?locale={language}", cancellationToken)
 				.ContinueWith(prevTask => ParseSchedule(prevTask.Result));
 		}
 	}

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 #if WINDOWS_APP
@@ -12,53 +13,29 @@ namespace Mntone.SplatoonClient.Internal
 {
 	internal static class HttpClientExtensions
 	{
-		public static Task<HttpResponseMessage> Get2Async(this HttpClient client, Uri uri)
+		public static Task<HttpResponseMessage> Get2Async(this HttpClient client, Uri uri, CancellationToken cancellationToken)
 		{
 #if WINDOWS_APP
-			return client.GetAsync(uri).AsTask();
+			return client.GetAsync(uri).AsTask(cancellationToken);
 #else
-			return client.GetAsync(uri);
-#endif
-		}
-
-		public static Task<string> GetString2Async(this HttpClient client, Uri uri)
-		{
-#if WINDOWS_APP
-			return client.GetStringAsync(uri).AsTask();
-#else
-			return client.GetStringAsync(uri);
+			return client.GetAsync(uri, cancellationToken);
 #endif
 		}
 
 #if WINDOWS_APP
-		public static Task<string> ReadAsString2Async(this IHttpContent content)
-		{
-			return content.ReadAsStringAsync().AsTask();
-		}
+		public static Task<string> ReadAsString2Async(this IHttpContent content, CancellationToken cancellationToken) => content.ReadAsStringAsync().AsTask(cancellationToken);
 #else
-		public static Task<string> ReadAsString2Async(this HttpContent content)
-		{
-			return content.ReadAsStringAsync();
-		}
+		public static Task<string> ReadAsString2Async(this HttpContent content, CancellationToken cancellationToken) => content.ReadAsStringAsync();
 #endif
 
-		public static Task<string> GetStringWithAccessCheckAsync(this HttpClient client, string uriText)
+		public static Task<string> GetStringWithAccessCheckAsync(this HttpClient client, string uriText, CancellationToken cancellationToken) => client.GetStringWithAccessCheckAsync(new Uri(uriText), cancellationToken);
+		public static Task<string> GetStringWithAccessCheckAsync(this HttpClient client, Uri uri, CancellationToken cancellationToken)
 		{
-			return client.Get2Async(new Uri(uriText)).ContinueWith(prevTask =>
-			{
-				var result = prevTask.Result;
-				AccessCheck(result);
-				return result.Content.ReadAsString2Async();
-			}).Unwrap();
-		}
-
-		public static Task<string> GetStringWithAccessCheckAsync(this HttpClient client, Uri uri)
-		{
-			return client.Get2Async(uri).ContinueWith(prevTask =>
+			return client.Get2Async(uri, cancellationToken).ContinueWith(prevTask =>
 				{
 					var result = prevTask.Result;
 					AccessCheck(result);
-					return result.Content.ReadAsString2Async();
+					return result.Content.ReadAsString2Async(cancellationToken);
 				}).Unwrap();
 		}
 
