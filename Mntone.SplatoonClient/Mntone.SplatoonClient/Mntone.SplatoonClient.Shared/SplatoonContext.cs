@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 #if WINDOWS_APP
 using Windows.Web.Http;
 using Windows.Web.Http.Filters;
+using Windows.Web.Http.Headers;
 #else
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 #endif
 
 namespace Mntone.SplatoonClient
@@ -48,14 +50,16 @@ namespace Mntone.SplatoonClient
 				AutomaticDecompression = true,
 			};
 
-			var cookie = new HttpCookie(SplatoonConstantValues.COOKIE_SESSION_NAME, SplatoonConstantValues.DOMAIN_URI_TEXT, "/")
+			var cookie = new HttpCookie(SplatoonConstantValues.COOKIE_SESSION_NAME, SplatoonConstantValues.DOMAIN_TEXT, "/")
 			{
 				Value = sessionValue,
 				Secure = true,
 				HttpOnly = true,
 			};
-            this._filter.CookieManager.SetCookie(cookie);
+			this._filter.CookieManager.SetCookie(cookie);
 			this._client = new HttpClient(this._filter);
+			this._client.DefaultRequestHeaders.AcceptEncoding.Add(new HttpContentCodingWithQualityHeaderValue("gzip"));
+			this._client.DefaultRequestHeaders.AcceptEncoding.Add(new HttpContentCodingWithQualityHeaderValue("deflate"));
 #else
 			this._handler = new HttpClientHandler()
 			{
@@ -66,10 +70,19 @@ namespace Mntone.SplatoonClient
 			this._handler.CookieContainer.SetCookies(SplatoonConstantValues.DOMAIN_URI, cookie);
 			this._client = new HttpClient(this._handler);
 #endif
-			this._client.DefaultRequestHeaders.Add("user-agent",
-				!string.IsNullOrEmpty(this.AdditionalUserAgent)
-					? $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version} ({this.AdditionalUserAgent})"
-					: $"{AssemblyInfo.QualifiedName}/{AssemblyInfo.Version}");
+			this.InitializeUserAgent();
+		}
+
+		private void InitializeUserAgent()
+		{
+			this._client.DefaultRequestHeaders.UserAgent.Clear();
+#if WINDOWS_APP
+			this._client.DefaultRequestHeaders.UserAgent.Add(new HttpProductInfoHeaderValue(AssemblyInfo.QualifiedName, AssemblyInfo.Version));
+			if (!string.IsNullOrEmpty(this.AdditionalUserAgent)) this._client.DefaultRequestHeaders.UserAgent.Add(new HttpProductInfoHeaderValue(this.AdditionalUserAgent));
+#else
+			this._client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(AssemblyInfo.QualifiedName, AssemblyInfo.Version));
+			if (!string.IsNullOrEmpty(this.AdditionalUserAgent)) this._client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(this.AdditionalUserAgent));
+#endif
 		}
 
 		public Task SignOutAsync() => this.SignOutAsync(CancellationToken.None);
@@ -155,10 +168,7 @@ namespace Mntone.SplatoonClient
 				if (this._AdditionalUserAgent == value) return;
 
 				this._AdditionalUserAgent = value;
-
-				var sessionValue = this.SessionValue;
-				this.Release();
-				this.Initialize(sessionValue);
+				this.InitializeUserAgent();
 			}
 		}
 		private string _AdditionalUserAgent = null;
