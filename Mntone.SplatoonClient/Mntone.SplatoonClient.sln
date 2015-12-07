@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Demo", "Mntone.SplatoonClient.Demo\Mntone.SplatoonClient.Demo.csproj", "{7071753B-C25E-4CC4-95B8-4F10A63A3952}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Mntone.SplatoonClient.Shared", "Mntone.SplatoonClient\Mntone.SplatoonClient.Shared\Mntone.SplatoonClient.Shared.shproj", "{19056D60-90C7-49DA-9585-F8A9FDD6C2E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Windows", "Mntone.SplatoonClient\Mntone.SplatoonClient.Windows\Mntone.SplatoonClient.Windows.csproj", "{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.XPath", "Mntone.XPath\Mntone.XPath\Mntone.XPath.csproj", "{AF17C1CD-8EEA-4612-8461-C4F91821D722}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -48,6 +50,10 @@ Global
 		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC4DDA5D-5D14-415F-9AC5-6210B48D3E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF17C1CD-8EEA-4612-8461-C4F91821D722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF17C1CD-8EEA-4612-8461-C4F91821D722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF17C1CD-8EEA-4612-8461-C4F91821D722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF17C1CD-8EEA-4612-8461-C4F91821D722}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

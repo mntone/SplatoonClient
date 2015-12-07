@@ -19,6 +19,7 @@ namespace Mntone.SplatoonClient.Demo
 			var ctx = SplatoonContextFactory.GetContextAsync(username, password).GetAwaiter().GetResult();
 			ViewFriends(ctx);
 			ViewRanking(ctx);
+			ViewProfile(ctx);
 			ViewSchedule(ctx);
 			ctx.SignOutAsync().GetAwaiter().GetResult();
 
@@ -51,6 +52,17 @@ namespace Mntone.SplatoonClient.Demo
 			{
 				Console.WriteLine($"{user.Rank}: {user.Name} ({user.Score})");
 			}
+			Console.WriteLine("-----------");
+		}
+
+		private static void ViewProfile(SplatoonContext ctx)
+		{
+			var profile = ctx.GetProfileAsync().GetAwaiter().GetResult();
+
+			Console.WriteLine("---[ Your profile ]--------");
+			Console.WriteLine($"Name:\t{profile.Name}");
+			Console.WriteLine($"Rank:\t{profile.Rank}");
+			Console.WriteLine($"Udemae:\t{profile.Udemae}");
 			Console.WriteLine("-----------");
 		}
 

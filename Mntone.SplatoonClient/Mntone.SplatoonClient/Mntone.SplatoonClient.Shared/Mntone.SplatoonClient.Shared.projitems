@@ -6,19 +6,23 @@
     <SharedGUID>19056d60-90c7-49da-9585-f8a9fdd6c2e9</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Mntone.SplatoonClient.Shared</Import_RootNamespace>
+    <Import_RootNamespace>Mntone.SplatoonClient</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\HtmlAgilityExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\HtmlAgilityXPathRetriveConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\HttpClientExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\JsonSerializerExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\Messages.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\SplatoonConstantValues.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Internal\SplatoonHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProfileParseConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonClientException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextFriends.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextRanking.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextProfile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextStages.cs" />
   </ItemGroup>
 </Project>

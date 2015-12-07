@@ -7,5 +7,6 @@
 		public const string IMPOSSIBLE = "This operation is impossible.";
 		public const string UNAUTHORIZED = "Response status code does not indicate success: 401 (Unauthorized).";
 		public const string SERVICE_UNAVAILBLE = "Response status code does not indicate success: 503 (Service Unavailable).";
+		public const string XPATH_PARSE_ERROR = "Cannot read xpath.";
 	}
 }

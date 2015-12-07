@@ -45,9 +45,9 @@ namespace Mntone.SplatoonClient.Entities
 
 		[DataMember(Name = "mode", IsRequired = true)]
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
-		private string ModeImpl
+		private string ModeAsString
 		{
-			get { return this.Mode.ToGameModeString(); }
+			get { return this.Mode.AsString(); }
 			set { this.Mode = value.ToGameMode(); }
 		}
 
@@ -64,7 +64,7 @@ namespace Mntone.SplatoonClient.Entities
 		public string Name { get; private set; }
 
 		/// <summary>
-		/// Mii iamge uri
+		/// Mii image uri
 		/// </summary>
 		[DataMember(Name = "mii_url", IsRequired = true)]
 		public Uri MiiImageUri { get; private set; }

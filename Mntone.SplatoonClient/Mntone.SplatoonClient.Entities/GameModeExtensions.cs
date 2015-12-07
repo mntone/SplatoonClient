@@ -4,7 +4,7 @@ namespace Mntone.SplatoonClient.Entities
 {
 	public static class GameModeExtensions
 	{
-		public static string ToGameModeString(this GameMode mode)
+		public static string AsString(this GameMode mode)
 		{
 			switch (mode)
 			{
@@ -21,11 +21,11 @@ namespace Mntone.SplatoonClient.Entities
 			throw new Exception();
 		}
 
-		public static GameMode ToGameMode(this string modeText)
+		public static GameMode ToGameMode(this string modeAsString)
 		{
-			if (string.IsNullOrEmpty(modeText)) throw new Exception();
+			if (string.IsNullOrEmpty(modeAsString)) throw new Exception();
 
-			switch (modeText)
+			switch (modeAsString)
 			{
 				case "offline": return GameMode.Offline;
 				case "online": return GameMode.Online;

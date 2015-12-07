@@ -12,8 +12,8 @@ using Mntone.SplatoonClient.Internal;
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: AssemblyVersion("0.9.4.3")]
-[assembly: AssemblyFileVersion("0.9.4.3")]
+[assembly: AssemblyVersion("0.9.5.0")]
+[assembly: AssemblyFileVersion("0.9.5.0")]
 
 namespace Mntone.SplatoonClient.Internal
 {
