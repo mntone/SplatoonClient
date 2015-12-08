@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Demo"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient", "Mntone.SplatoonClient\Mntone.SplatoonClient\Mntone.SplatoonClient.csproj", "{1E193797-BC6F-4854-8AB6-6608514C9071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.NintendoNetworkHelper", "..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper.csproj", "{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mntone.SplatoonClient.Entities", "Mntone.SplatoonClient.Entities\Mntone.SplatoonClient.Entities.csproj", "{DD29069A-5A04-4AAE-B73C-3354447F091E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mntone.SplatoonClient", "Mntone.SplatoonClient", "{7908AA35-8B05-4DF1-BF2C-A68BB93DB39B}"
@@ -36,10 +34,6 @@ Global
 		{1E193797-BC6F-4854-8AB6-6608514C9071}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E193797-BC6F-4854-8AB6-6608514C9071}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1CFAAE6C-8D46-4059-8CCA-B025FB5AD48F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD29069A-5A04-4AAE-B73C-3354447F091E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DD29069A-5A04-4AAE-B73C-3354447F091E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD29069A-5A04-4AAE-B73C-3354447F091E}.Release|Any CPU.ActiveCfg = Release|Any CPU

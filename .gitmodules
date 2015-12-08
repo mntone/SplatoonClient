@@ -1,6 +1,3 @@
-[submodule "NintendoNetworkHelper"]
-	path = NintendoNetworkHelper
-	url = https://github.com/mntone/NintendoNetworkHelper.git
 [submodule "Mntone.SplatoonClient/Mntone.XPath"]
 	path = Mntone.SplatoonClient/Mntone.XPath
 	url = https://github.com/mntone/XPath.git

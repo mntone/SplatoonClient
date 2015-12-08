@@ -89,11 +89,15 @@ namespace Mntone.SplatoonClient
 			var gearPowerSub1Svg = config.GearPowerSub1Getter(gearPowerSubArray).Single();
 			gear.GearPowerSub1SvgUri = ParseImageUriFromStyle(gearPowerSub1Svg, config);
 
-			var gearPowerSub2Svg = config.GearPowerSub2Getter(gearPowerSubArray).Single();
-			gear.GearPowerSub2SvgUri = ParseImageUriFromStyle(gearPowerSub2Svg, config);
+			try
+			{
+				var gearPowerSub2Svg = config.GearPowerSub2Getter(gearPowerSubArray).Single();
+				gear.GearPowerSub2SvgUri = ParseImageUriFromStyle(gearPowerSub2Svg, config);
 
-			var gearPowerSub3Svg = config.GearPowerSub3Getter(gearPowerSubArray).Single();
-			gear.GearPowerSub3SvgUri = ParseImageUriFromStyle(gearPowerSub3Svg, config);
+				var gearPowerSub3Svg = config.GearPowerSub3Getter(gearPowerSubArray).Single();
+				gear.GearPowerSub3SvgUri = ParseImageUriFromStyle(gearPowerSub3Svg, config);
+			}
+			catch (ArgumentOutOfRangeException) { }
 
 			return gear;
 		}

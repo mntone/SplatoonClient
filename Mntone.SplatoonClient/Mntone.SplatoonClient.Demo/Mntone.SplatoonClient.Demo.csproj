@@ -47,10 +47,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper\Mntone.NintendoNetworkHelper.csproj">
-      <Project>{1cfaae6c-8d46-4059-8cca-b025fb5ad48f}</Project>
-      <Name>Mntone.NintendoNetworkHelper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Mntone.SplatoonClient.Entities\Mntone.SplatoonClient.Entities.csproj">
       <Project>{dd29069a-5a04-4aae-b73c-3354447f091e}</Project>
       <Name>Mntone.SplatoonClient.Entities</Name>
