@@ -39,6 +39,19 @@ namespace Mntone.SplatoonClient
 		/// <summary>
 		/// Equip detail
 		/// </summary>
+		[DataMember(Name = "info_message")]
+		public string InfoMessageXPath
+		{
+			get { return this._InfoMessageXPath; }
+			set { this.InfoMessageGetter = this.SetValue<HtmlNode>(ref this._InfoMessageXPath, value); }
+		}
+		[System.Diagnostics.DebuggerBrowsable(System.Diagnostics.DebuggerBrowsableState.Never)]
+		private string _InfoMessageXPath;
+		public Func<IEnumerable<HtmlNode>, IEnumerable<HtmlNode>> InfoMessageGetter { get; set; }
+
+		/// <summary>
+		/// Equip detail
+		/// </summary>
 		[DataMember(Name = "equip_detail")]
 		public string EquipDetailXPath
 		{
@@ -337,6 +350,7 @@ namespace Mntone.SplatoonClient
 					_Default = new ProfileParseConfig()
 					{
 						ContentRootXPath = "/html/body/div[@class=\"ika-wrapper equipment\"]/div[@class=\"do\"]/div[@class=\"contents\"]",
+						InfoMessageXPath = "/div/p[@class=\"info-message\"]",
 						EquipDetailXPath = "/div[@class=\"equip-detail\"]",
 						UserMainXPath = "/div[@class=\"equip-user-main\"]",
 						UserInfoXPath = "/div[@class=\"equip-user-info\"]",

@@ -19,6 +19,9 @@ namespace Mntone.SplatoonClient
 
 			var xpathConfig = config;
 			var content = xpathConfig.ContentRootGetter(new[] { doc.DocumentNode }).Single();
+			var infoMessage = xpathConfig.InfoMessageGetter(new[] { content }).SingleOrDefault();
+			if (infoMessage != null) throw new SplatoonClientException(infoMessage.InnerText);
+
 			var equipDetail = xpathConfig.EquipDetailGetter(new[] { content }).Single();
 
 			var user = new UserProfile();
