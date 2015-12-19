@@ -17,6 +17,7 @@ namespace Mntone.SplatoonClient.Demo
 			Console.WriteLine("-----------");
 
 			var ctx = SplatoonContextFactory.GetContextAsync(username, password).GetAwaiter().GetResult();
+			ViewMyId(ctx);
 			ViewFriends(ctx);
 			ViewRanking(ctx);
 			ViewProfile(ctx);
@@ -25,6 +26,13 @@ namespace Mntone.SplatoonClient.Demo
 
 			Console.WriteLine("Press any key to exit.");
 			Console.ReadKey();
+		}
+
+		private static void ViewMyId(SplatoonContext ctx)
+		{
+			var id = ctx.GetMyIdAsync().GetAwaiter().GetResult();
+			Console.WriteLine($"My ID: {id}");
+			Console.WriteLine("-----------");
 		}
 
 		private static void ViewFriends(SplatoonContext ctx)

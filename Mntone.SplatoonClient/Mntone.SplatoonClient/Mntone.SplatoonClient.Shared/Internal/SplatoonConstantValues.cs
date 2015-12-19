@@ -20,6 +20,7 @@ namespace Mntone.SplatoonClient.Internal
 		public const string FRIENDS_URI_TEXT = DOMAIN_URI_TEXT + "friend_list/index.json";
 		public const string RANKING_URI_TEXT = DOMAIN_URI_TEXT + "ranking.json";
 		public const string SCHEDULES_URI_TEXT = DOMAIN_URI_TEXT + "schedule.json";
+		public const string RANKING_FOR_MY_HASH_ID_URI_TEXT = DOMAIN_URI_TEXT + "ranking";
 		public const string PROFILE_URI_TEXT = DOMAIN_URI_TEXT + "profile";
 	}
 }

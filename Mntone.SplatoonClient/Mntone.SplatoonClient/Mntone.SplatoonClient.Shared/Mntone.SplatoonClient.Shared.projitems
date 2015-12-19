@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContext.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextFriends.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextMyId.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextRanking.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextProfile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SplatoonContextStages.cs" />
