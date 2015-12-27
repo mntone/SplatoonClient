@@ -7,5 +7,9 @@ namespace Mntone.SplatoonClient
 		public SplatoonClientException(string message)
 			: base(message)
 		{ }
+
+		public SplatoonClientException(string message, Exception innerException)
+			: base(message, innerException)
+		{ }
 	}
 }

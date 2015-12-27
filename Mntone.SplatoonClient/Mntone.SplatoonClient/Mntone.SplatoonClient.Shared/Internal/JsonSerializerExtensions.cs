@@ -1,5 +1,5 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
@@ -9,11 +9,18 @@ namespace Mntone.SplatoonClient.Internal
 	{
 		public static T Load<T>(string data)
 		{
-			using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(data)))
+			try
 			{
-				return (T)new DataContractJsonSerializer(typeof(T)).ReadObject(ms);
+				using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(data)))
+				{
+					return (T)new DataContractJsonSerializer(typeof(T)).ReadObject(ms);
+				}
 			}
-			throw new Exception("Parse Error");
+			catch (SerializationException ex)
+			{
+				throw new SplatoonClientException(Messages.PARSE_ERROR, ex);
+			}
+			throw new SplatoonClientException(Messages.PARSE_ERROR);
 		}
 	}
 }
