@@ -159,7 +159,7 @@ namespace Mntone.SplatoonClient
 
 			this.AccessCheck();
 			return this._client.GetStringWithAccessCheckAsync($"{SplatoonConstantValues.PROFILE_URI_TEXT}/{friendHashID}", cancellationToken)
-				.ContinueWith(prevTask => ParseProfile(prevTask.Result, config));
+				.ContinueWith(prevTask => ParseProfile(prevTask.Result, config), TaskContinuationOptions.OnlyOnRanToCompletion | TaskContinuationOptions.ExecuteSynchronously);
 		}
 	}
 }

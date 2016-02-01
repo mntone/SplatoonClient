@@ -15,7 +15,7 @@ namespace Mntone.SplatoonClient
 		{
 			this.AccessCheck();
 			return this._client.GetStringWithAccessCheckAsync(SplatoonConstantValues.RANKING_URI_TEXT, cancellationToken)
-				.ContinueWith(prevTask => ParseRanking(prevTask.Result));
+				.ContinueWith(prevTask => ParseRanking(prevTask.Result), TaskContinuationOptions.OnlyOnRanToCompletion | TaskContinuationOptions.ExecuteSynchronously);
 		}
 	}
 }

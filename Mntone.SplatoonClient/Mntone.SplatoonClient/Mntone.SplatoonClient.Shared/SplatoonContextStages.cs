@@ -30,7 +30,7 @@ namespace Mntone.SplatoonClient
 
 			this.AccessCheck();
 			return this._client.GetStringWithAccessCheckAsync($"{SplatoonConstantValues.SCHEDULES_URI_TEXT}?locale={language}", cancellationToken)
-				.ContinueWith(prevTask => ParseSchedule(prevTask.Result));
+				.ContinueWith(prevTask => ParseSchedule(prevTask.Result), TaskContinuationOptions.OnlyOnRanToCompletion | TaskContinuationOptions.ExecuteSynchronously);
 		}
 	}
 }
