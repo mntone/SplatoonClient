@@ -60,6 +60,13 @@ namespace Mntone.SplatoonClient.Demo
 			{
 				Console.WriteLine($"{user.Rank}: {user.Name} ({user.Score})");
 			}
+
+			Console.WriteLine("---[ Splatfest ]--------");
+			foreach (var user in ranking.Festival)
+			{
+				var mark = user.Top100 ? "★" : "";
+				Console.WriteLine($"{user.Rank}{mark}: {user.Name} ({user.Score})");
+			}
 			Console.WriteLine("-----------");
 		}
 

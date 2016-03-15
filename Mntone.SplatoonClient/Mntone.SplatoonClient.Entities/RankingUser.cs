@@ -6,7 +6,7 @@ namespace Mntone.SplatoonClient.Entities
 {
 	[DataContract]
 	[System.Diagnostics.DebuggerDisplay("{this.Rank}: {this.Name} ({this.Score}) ")]
-	public sealed class RankingUser
+	public class RankingUser
 	{
 		internal RankingUser(string id, uint rank, uint score, string name, Uri miiImageUri,
 			Uri weaponImageUri, Uri weaponRetinaImageUri,

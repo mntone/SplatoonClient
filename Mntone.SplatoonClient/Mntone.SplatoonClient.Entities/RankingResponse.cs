@@ -22,5 +22,11 @@ namespace Mntone.SplatoonClient.Entities
 		/// </summary>
 		[DataMember(Name = "gachi", IsRequired = true)]
 		public RankingUser[] Gachi { get; private set; }
+
+		/// <summary>
+		/// Splatfest ranking
+		/// </summary>
+		[DataMember(Name = "festival", IsRequired = true)]
+		public FestivalRankingUser[] Festival { get; private set; }
 	}
 }

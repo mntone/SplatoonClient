@@ -46,6 +46,7 @@
     <Compile Include="PaintedRank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RankingResponse.cs" />
+    <Compile Include="FestivalRankingUser.cs" />
     <Compile Include="RankingUser.cs" />
     <Compile Include="Stage.cs" />
     <Compile Include="Schedule.cs" />
