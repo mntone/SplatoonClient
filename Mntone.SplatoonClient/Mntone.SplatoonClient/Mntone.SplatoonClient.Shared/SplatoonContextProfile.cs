@@ -46,7 +46,7 @@ namespace Mntone.SplatoonClient
 			var miiImageUri = config.MiiImageUriGetter(userInfoArray).Single();
 			user.MiiImageUri = new Uri(miiImageUri);
 
-			user.Name = config.MiiNameGetter(userInfoArray).Single();
+			user.Name = ConvertEntity(config.MiiNameGetter(userInfoArray).Single());
 
 			var rank = config.RankGetter(userInfoArray).Single();
 			user.Rank = Convert.ToByte(rank);
@@ -58,6 +58,8 @@ namespace Mntone.SplatoonClient
 			user.WeaponImageUri = weaponImageUris.Item1;
 			user.WeaponRetinaImageUri = weaponImageUris.Item2;
 		}
+
+		private static string ConvertEntity(string original) => original.Replace("&lt;", "<").Replace("&gt;", ">").Replace("&amp;", "&").Replace("&quot;", "\"");
 
 		private static void ParseUserProtections(HtmlNode userProtectionsNode, UserProfile user, ProfileParseConfig config)
 		{
